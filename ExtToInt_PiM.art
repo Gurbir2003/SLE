@@ -1,0 +1,36 @@
+statement ::= seq^^ | assign^^ | if^^ | while^^ | backend^^
+ 
+seq ::= statement statement
+assign ::= ID ':='^ subExpr ';'^
+if ::= 'if'^ relExpr statement 'else'^ statement
+while ::= 'while'^ relExpr statement 
+backend ::= 'backend'^ '('^ subExpr ','^ subExpr ','^ subExpr ')'^
+
+relExpr ::= subExpr^^ | gt^^ | ge^^ | e^^ | lt^^ | le^^ | ne^^
+gt ::= relExpr '>'^ subExpr
+ge ::= relExpr '>='^ subExpr
+e  ::= relExpr '=='^ subExpr
+lt ::= relExpr '<'^ subExpr
+le ::= relExpr '<='^ subExpr
+ne ::= relExpr '!='^ subExpr
+
+subExpr ::= operand^^ | sub^^ | add^^ | mult^^ | div^^ | exp^^ | mod^^
+sub ::= subExpr '-'^ operand
+add ::= subExpr '+'^ operand
+mult ::= subExpr '*'^ operand
+div ::= subExpr '/'^ operand
+exp ::= subExpr '**'^ operand
+mod ::= subExpr '%'^ operand
+
+operand ::= deref^^ | INTEGER^^ | '('^ subExpr^^ ')'^
+deref ::= ID
+
+
+ID <leftExtent:int rightExtent:int lexeme:String v:ARTValueString> ::= 
+  &ID^^ {ID.lexeme = artLexeme(ID.leftExtent, ID.rightExtent); 
+  ID.v = new ARTValueString(artLexemeAsID(ID.leftExtent, ID.rightExtent)); }  
+
+INTEGER <leftExtent:int rightExtent:int lexeme:String v:ARTValueInteger32> ::= 
+  &INTEGER^^ { INTEGER.lexeme = artLexeme(INTEGER.leftExtent, INTEGER.rightExtent); 
+  INTEGER.v = new ARTValueInteger32(artLexemeAsInteger(INTEGER.leftExtent, INTEGER.rightExtent)); }  
+

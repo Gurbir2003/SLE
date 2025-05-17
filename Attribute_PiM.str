@@ -1,0 +1,41 @@
+{
+x = 5;
+while x <= 10 do { print("x is ", x, "\n"); x = x + 1; }
+}
+
+{
+y = 6;
+while y >= 0 do { print("y is ", y, "\n"); y = y - 1; }
+}
+
+{print("The result of the addition expression 52+69+79 is : ", 52+69+79, "\n");}
+
+{print("The result of the Multiplication expression 30*45 is : ", 30*45, "\n");}
+
+{print("The result of the Division expression 20/5 is : ", 20/5, "\n");}
+
+{print("The result of the modular expression 76%7 is : ", 76%7, "\n");}
+
+{print("The result of the exponential expression 2**3 is : ", 2**3, "\n");}
+
+{print("The result of the subtraction expression 7-3-1 is: ", 7-3-1, "\n");}
+
+{print("The result of the complex expression 7+3-1 is: ", 7+3-1, "\n");}
+
+{print("The result of the complex expression 10-11+1 is: ", 10-11+1, "\n");}
+
+{print("The result of the complex expression 5*10%3 is: ", 5*10%3, "\n");}
+
+{print("The result of the complex expression (7**3)+(10-5) is: ", 7**3+10-5, "\n");}
+
+{print("The result of the greater than expression 36>24 is : ", 36>24 , " therefore true",  "\n");}
+
+{print("The result of the greater than expression 3>4 is : ", 3>4 , " therefore false",  "\n");}
+
+{print("The result of the greater than equal to expression 20>=19 is : ", 20>=19 , " therefore true",  "\n");}
+
+{print("The result of the less than expression 24<36 is : ", 24<36 , " therefore true",  "\n");}
+
+{print("The result of the less than expression 6<3 is : ", 6<3 , " therefore false",  "\n");}
+
+{print("The result of the less than equal to expression 19<=20 is : ", 19<=20 , " therefore true",  "\n");}

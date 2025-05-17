@@ -1,0 +1,125 @@
+A: Informal language specification
+==================================
+
+The language 3DModdelling can essentially manipulate 3D models with a focus on generating models that are more suitable for 3D printing.
+
+S.1 Programs
+------------
+
+A 3DModelling program consists of sequences of one or more 3D modelling statements that are used to manipulate 3D models.
+
+Statements are separated by the ; and-also operator. There is no statement terminator.
+
+A sequence of whitespace characters can be used wherever one whitespace is valid.
+
+
+S.2 Modelling expressions and statements 
+------------------------------
+
+3DModelling supports geometric operations for performing sophisticated computational analysis or to put it simply a precise calculation modeling. Calculation in a 3D space are specified by defining variables to represent them such as to represent multiplication(*) symbol/variable will be used. The use of symbols/variables are then applied to manipulate these arithmetic calculations.In 3DMod there will be 5 operations that will be focused on which are multiplication, division, addition, modulus/modulo and substraction . In 3DMod alphanumeric identifiers not reserved as keywords represent variables bound to decimal values.
+
+Arithemetic operations: 
+1. Multiplication(*)
+2. Division(/)
+3. Addition(+)
+4. Substraction(-)
+5. Modulus/Modulo(MOD or %)
+
+
+S.3 Predicates
+--------------
+
+3DModelling enables the user to use comparison statements or of differrent floating point variables. There are various operators that can be used to compare different values and the result of them will be boolean resulting in either true or false. The operators have been defined below.
+
+x > y 		x greater than y
+x < y 		x less than y
+x == y      x equals to y
+x != y  	x not equal to y
+x >= y  	x greater than equal to y
+x <= y  	x less than equal to y
+x ≈ y       x approximately equal to y(optional)
+x !≈ y      x approximately equal to y(optional)
+
+
+
+S.4 Selection statements
+------------------------
+
+3DModelling provides two selection statements
+
+if condition/predicate then _statement else _statement
+
+if condition/predicate then _statement
+
+where _pred is a predicate as defined in section S.3, and _statement is any statement
+
+
+S.5 Iteration statements
+------------------------
+
+3DModelling provides one iteration statement
+
+while _pred do _statement
+
+where _pred is a predicate as defined in section S.4, and _statement is any statement
+
+
+S.6 Domain specific types
+-------------------------
+
+3DModelling has various domain specific types for 3D modelling that include: 
+1. Creation of various shapes such as sphere, cone, cuboid, cylinder, cube etc..
+2. A 3D vector inorder to get the three dimensional coordinates(x,y,z).
+3. A polygon mesh can be inorder to represent the various objects that have been made of different number of vertices,faces and edges.
+ 
+
+
+
+S.7 Domain specific operations
+------------------------------
+
+3DModelling provides one DSL-type statement
+
+backend(_v1:point, _v2:point, _v3:point):point
+
+where v1, v2 and v3 are point expressions. 
+
+This statement then activates the corresponding method in class ValueUserPlugin via the __user() function in the ART value system.
+
+The behaviour depends on the code implemented in that class. 
+
+
+
+
+B: Internal syntax constructors and arities
+===========================================
+seq(commandA, commandB) - The sequence constructor executes commandA followed by commandB.
+
+mod(valueA:__real64, valueB:__real64):__real64 - The modulus/modular constructor essentially computes the remainder of the two values by dividing(real number) valueA by ValueB using % operator(ValueA % ValueB).
+
+sub(valueA:__real64, valueB:__real64):real64 - The substraction constructor subtracts(real number) the ValueA and ValueB(ValueA - ValueB).
+
+add(valueA:__real64, valueB:__real64):__real64 - The addition constructor add(real number)the ValueA to ValueB(ValueA + ValueB) and give the sum of the two values.
+
+div(valueA:__real64, valueB:__real64):__real64- The division constructor divides(real number) ValueA to ValueB(ValueA / ValueB) producing the quotient.
+
+mul(valueA:__real64, valueB:__real64):__real64- The multiplication constructor multiplies(real number) the ValueA by ValueB(ValueA * ValueB).
+
+assign(identifier:__real64, value:__real64) - The assign constructor assigns value to the name identifier in the variables(Optional).
+
+ne(valueA:__real64, valueB:__real64):__boolean - The not equal to constructor checks if valueA is not equal to valueB(valueA != valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+et(valueA:__real64, valueB:__real64):__boolean - The equal to constructor checks if valueA is equal to valueB(valueA == valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+ge(valueA:__real64, valueB:__real64):__boolean - The greater than equal to constructor checks if valueA is greater than or equal to valueB(valueA >= valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+gt(valueA:__real64, valueB:__real64):__boolean - The greater than constructor checks if valueA is greater than valueB(valueA > valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+le(valueA:__real64, valueB:__real64):__boolean - The less than equal to constructor checks if valueA is less than or equal to valueB(valueA <= valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+lt(valueA:__real64, valueB:__real64):__boolean - The less than constructor checks if valueA is less than valueB(valueA < valueB).The "__boolean" is used to avoid confusion,provide clarity and improve readability within the DSL system.
+
+
+backend(_V1:identifier, _V2:identifier, _V3:identifier)
+
+Note: also add signatures for every domain specific primitive, such as box(_x:real64, _y:real64, _z:real64)

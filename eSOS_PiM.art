@@ -1,0 +1,316 @@
+-sequenceDone
+---
+seq(__done, _C), _sig -> _C, _sig
+
+-sequence 
+_C1, _sig -> _C1P, _sigP
+---
+seq(_C1, _C2), _sig -> seq(_C1P, _C2), _sigP
+
+-ifTrue 
+---
+if(True, _C1, _C2),_sig -> _C1, _sig
+
+-ifFalse 
+---
+if(False, _C1, _C2),_sig -> _C2,_sig
+
+-ifResolve
+_E, _sig ->_EP, _sigP
+---
+if(_E,_C1,_C2),_sig -> if(_EP, _C1, _C2), _sigP
+
+-while
+---
+while(_E, _C),_sig -> if(_E, seq(_C, while(_E,_C)), __done), _sig
+
+-assign
+_n |> __real64(_)
+---
+assign(_X, _n), _sig -> __done, __put(_sig, _X, _n)
+
+-assignResolve
+_E, _sig -> _I, _sigP 
+---
+assign(_X,_E), _sig -> assign(_X, _I), _sigP
+
+-gt
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+gt(_n1, _n2),_sig -> __gt(_n1, _n2),_sig 
+
+-gtRight
+_n |> __real64(_) _E2, _sig -> _I2,_sigP 
+---
+gt(_n, _E2),_sig -> gt(_n, _I2), _sigP
+
+-gtLeft
+_E1, _sig -> _I1, _sigP 
+---
+gt(_E1, _E2),_sig -> gt(_I1, _E2), _sigP
+
+-lt
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+lt(_n1, _n2),_sig -> __lt(_n1, _n2),_sig 
+
+-ltRight
+_n |> __real64(_) _E2, _sig -> _I2,_sigP 
+---
+lt(_n, _E2),_sig -> lt(_n, _I2), _sigP
+
+-ltLeft
+_E1, _sig -> _I1, _sigP 
+---
+lt(_E1, _E2),_sig -> lt(_I1, _E2), _sigP
+
+-ne
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+ne(_n1, _n2),_sig -> __ne(_n1, _n2),_sig
+
+-neRight
+_n |> __real64(_)  _E2, _sig -> _I2,_sigP 
+---
+ne(_n, _E2),_sig -> ne(_n, _I2), _sigP
+
+-neLeft
+_E1, _sig -> _I1, _sigP 
+---
+ne(_E1, _E2),_sig -> ne(_I1, _E2), _sigP
+
+-e
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+e(_n1, _n2),_sig ->  __et(_n1, _n2),_sig
+
+-eRight
+_n |> __real64(_)  _E2, _sig -> _I2,_sigP 
+---
+e(_n, _E2),_sig -> e(_n, _I2), _sigP
+
+-eLeft
+_E1, _sig -> _I1, _sigP 
+---
+e(_E1, _E2),_sig -> e(_I1, _E2), _sigP
+
+-ge
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+ge(_n1, _n2),_sig -> __ge(_n1, _n2),_sig 
+
+-geRight
+_n |> __real64(_) _E2, _sig -> _I2,_sigP 
+---
+ge(_n, _E2),_sig -> ge(_n, _I2), _sigP
+
+-geLeft
+_E1, _sig -> _I1, _sigP 
+---
+ge(_E1, _E2),_sig -> ge(_I1, _E2), _sigP
+
+-le
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+le(_n1, _n2),_sig -> __le(_n1, _n2),_sig 
+
+-leRight
+_n |> __real64(_) _E2, _sig -> _I2,_sigP 
+---
+le(_n, _E2),_sig -> le(_n, _I2), _sigP
+
+-leLeft
+_E1, _sig -> _I1, _sigP 
+---
+le(_E1, _E2),_sig -> le(_I1, _E2), _sigP
+
+-sub
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+sub(_n1, _n2),_sig -> __sub(_n1, _n2),_sig
+
+-subRight
+_n |> __real64(_) _E2,_sig -> _I2,_sigP   
+---
+sub(_n, _E2),_sig -> sub(_n, _I2), _sigP
+
+-subLeft
+_E1,_sig -> _I1,_sigP
+---
+sub(_E1, _E2),_sig -> sub(_I1, _E2), _sigP
+
+-add
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+add(_n1, _n2),_sig -> __add(_n1, _n2),_sig
+
+-addRight
+_n |> __real64(_) _E2,_sig -> _I2,_sigP   
+---
+add(_n, _E2),_sig -> add(_n, _I2), _sigP
+
+-addLeft
+_E1,_sig -> _I1,_sigP
+---
+add(_E1, _E2),_sig -> add(_I1, _E2), _sigP
+
+-multiply
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+multiply(_n1, _n2),_sig -> __mul(_n1, _n2),_sig
+
+-multiplyRight
+_n |> __real64(_) _E2,_sig -> _I2,_sigP   
+---
+multiply(_n, _E2),_sig -> multiply(_n, _I2), _sigP
+
+-multiplyLeft
+_E1,_sig -> _I1,_sigP
+---
+multiply(_E1, _E2),_sig -> multiply(_I1, _E2), _sigP
+
+-divide
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+divide(_n1, _n2),_sig -> __div(_n1, _n2),_sig
+
+-divideRight
+_n |> __real64(_) _E2,_sig -> _I2,_sigP   
+---
+divide(_n, _E2),_sig -> __div(_n, _I2), _sigP
+
+-divideLeft
+_E1,_sig -> _I1,_sigP
+---
+divide(_E1, _E2),_sig -> divide(_I1, _E2), _sigP
+
+-modular
+_n1 |> __real64(_) _n2 |> __real64(_)
+---
+modular(_n1, _n2),_sig -> __mod(_n1, _n2),_sig
+
+-modularRight
+_n |> __real64(_) _E2,_sig -> _I2,_sigP   
+---
+modular(_n, _E2),_sig -> modular(_n, _I2), _sigP
+
+-modularLeft
+_E1,_sig -> _I1,_sigP
+---
+modular(_E1, _E2),_sig -> modular(_I1, _E2), _sigP
+
+-create_new_object
+---
+create_new_object(_type), _sig -> __user("create_new_object", _type), _sig
+
+-translate
+_handle |> __real64(_) _x |> __real64(_) _y |> __real64(_) _z |> __real64(_)
+---
+translate(_handle, _x, _y, _z), _sig -> __user("translate", _handle, _x, _y, _z), _sig
+
+-scale
+_handle |> __real64(_) _factor |> __real64(_)
+---
+scale(_handle, _factor), _sig -> __user("scale", _handle, _factor), _sig
+
+-rotate
+_handle |> __real64(_) _angle |> __real64(_)
+---
+rotate(_handle, _angle), _sig -> __user("rotate", _handle, _angle), _sig
+
+-cubeCreation
+_width |> __real64(_) _height |> __real64(_) _depth |> __real64(_)
+---
+cubeCreation(_width, _height, _depth), _sig -> __user("cubeCreation", _width, _height, _depth), _sig
+
+-sphereCreation
+_radius |> __real64(_)
+---
+sphereCreation(_radius), _sig -> __user("sphereCreation", _radius), _sig
+
+-cylinderCreation
+_radius |> __real64(_) _height |> __real64(_)
+---
+cylinderCreation(_radius, _height), _sig -> __user("cylinderCreation", _radius, _height), _sig
+
+-coneCreation
+_radius |> __real64(_) _height |> __real64(_) _slantHeight |> __real64(_)
+---
+coneCreation(_radius, _height, _slantHeight), _sig -> __user("coneCreation", _radius, _height, _slantHeight), _sig
+
+-cuboidCreation
+_width |> __real64(_) _height |> __real64(_) _depth |> __real64(_)
+---
+cuboidCreation(_width, _height, _depth), _sig -> __user("cuboidCreation", _width, _height, _depth), _sig
+
+-pyramidCreation
+_baseWidth |> __real64(_) _height |> __real64(_)
+---
+pyramidCreation(_baseWidth, _height), _sig -> __user("pyramidCreation", _baseWidth, _height), _sig
+
+-dodecahedronCreation
+_circumradius |> __real64(_)
+---
+dodecahedronCreation(_circumradius), _sig -> __user("dodecahedronCreation", _circumradius), _sig
+
+-torusCreation
+_majorRadius |> __real64(_) _minorRadius |> __real64(_)
+---
+torusCreation(_majorRadius, _minorRadius), _sig -> __user("torusCreation", _majorRadius, _minorRadius), _sig
+
+-hexagonalPrismCreation
+_radius |> __real64(_) _height |> __real64(_)
+---
+hexagonalPrismCreation(_radius, _height), _sig -> __user("hexagonalPrismCreation", _radius, _height), _sig
+
+-cubeRotation
+_handle |> __real64(_) _angle |> __real64(_)
+---
+cubeRotation(_handle, _angle), _sig -> __user("cubeRotation", _handle, _angle), _sig
+
+-cubeScaling
+_handle |> __real64(_) _factor |> __real64(_)
+---
+cubeScaling(_handle, _factor), _sig -> __user("cubeScaling", _handle, _factor), _sig
+
+-backend
+---
+backend(_P1, _P2, _P3), _sig -> __user(_P1, _P2, _P3), _sig
+
+!try backend(1,2,3), __map
+!try add(15.0,25.0), __map
+!try sub(6.0,4.0), __map
+!try multiply(23.0,3.0), __map
+!try divide(20.0,2.0), __map
+!try modular(12.0,7.0), __map
+!try cubeCreation(200.0,200.0,200.0), __map
+!try sphereCreation(100.0), __map
+!try cylinderCreation(80.0, 180.0), __map
+!try coneCreation(50.0, 200.0, 800.0), __map
+!try cuboidCreation(300.0, 150.0, 145.0), __map
+!try pyramidCreation(120.0, -150.0), __map
+!try dodecahedronCreation(2.5), __map
+!try torusCreation(50.1, 70.5), __map
+!try hexagonalPrismCreation(100.0, 200.0), __map
+!try create_new_object("Sphere"), __map
+!try cubeRotation(1.5, 90.0), __map
+!try cubeScaling(1.0, 2.0), __map
+!try translate(1.0, 1.0, 2.0, 3.0), __map
+!try scale(1.0, 1.7), __map
+!try rotate(2.0, 37.0), __map
+!try gt(15.0, 10.0), __map
+!try gt(20.0, add(10.0, 5.0)), __map
+!try gt(sub(30.0, 5.0), 20.0), __map
+!try lt(5.0, 15.0), __map
+!try lt(10.0, add(5.0, 10.0)), __map
+!try lt(sub(20.0, 5.0), 20.0), __map
+!try ne(10.0, 20.0), __map
+!try ne(20.0, add(15.0, 5.0)), __map
+!try ne(sub(30.0, 10.0), 20.0), __map
+!try ge(15.0, 10.0), __map
+!try ge(20.0, add(10.0, 10.0)), __map
+!try ge(sub(30.0, 5.0), 25.0), __map
+!try le(10.0, 15.0), __map
+!try le(20.0, add(10.0, 15.0)), __map
+!try le(sub(25.0, 5.0), 20.0), __map
+

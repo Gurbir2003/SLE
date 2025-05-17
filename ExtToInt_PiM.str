@@ -1,0 +1,120 @@
+a := 15; b := 9; c := 15; d := 20; e := 1; f := 2; g := 12; h := 3; i := 6; j := 23;
+
+while a != b
+  if a > b
+    a := a - b;
+  else
+  b := b - a;
+
+gcd := a;
+
+while a <= b
+  if a < b
+    a := a + b;
+  else
+  b := b + a;
+  
+while a == c
+  if a < b
+    a := a - c;
+  else
+  c := c + a;
+
+while a == c
+  if a < b
+    a := a - c;
+  else
+  c := c + a;
+  
+while d > c
+  if d == c
+    d := d % c;
+  else
+  c := c + d;
+  
+while a != b
+  if a * b > a
+    a := a * b;
+  else
+    b := b / a;
+
+while a <= b
+  if a / b >= a
+    a := a ** b;
+  else
+    b := b / a;
+
+while a == c
+  if a ** c >= b
+    a := a * c;
+  else
+    c := c % a;
+
+while a != c
+  if a % c <= b
+    a := a + c;
+  else
+    c := c - a;
+
+while d > c
+  if d * c != d
+    d := d % c;
+  else
+    c := c - d; 
+    
+while a != c
+  if a > c
+    a := a - c;
+  else
+    c := c - a;
+
+while a == c
+  if a != b
+    a := a + c;
+  else
+    c := c - a;
+  
+while d > c
+  if d >= c
+    d := d % c;
+  else
+    c := c + d;
+  
+while a < c
+  if a != c
+    a := a * c;
+  else
+    c := c / a;
+
+while a >= b
+  if a <= b
+    a := a ** b;
+  else
+    b := b * a;
+
+while (a * b + c) < (d / (e + f))
+  if (a ** b) > (c % d)
+    a := (a * b) - (c % d);
+  else
+    c := (c / d) + (e * f);
+
+while (a * b + c) >= (d / (e + f))
+  if (a ** b) != (c % d)
+    a := (a * b) - (c % d);
+  else
+    c := (c / d) + (e * f);
+    
+while ((a + b) + (c * d)) >= ((e - f) * (g / h))
+  if ((a * c) % (d + e)) != ((f ** g) / (h - i))
+    a := ((a * c) % (d + e)) - ((f ** g) / (h - i));
+  else
+    c := ((c / d) * (e + f)) + ((g ** h) - (i % j));
+
+while ((a + b) * (c - d)) == ((e * f) ** (g % h))
+  if ((a / b) + (c * d)) != ((e - f) ** (g % h))
+    a := ((a / b) + (c * d)) - ((e - f) ** (g % h));
+  else
+    c := ((c % d) * (e + f)) + ((g - h) / (i ** j));
+
+backend(1,2,3)
+
